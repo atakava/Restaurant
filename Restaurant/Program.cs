@@ -32,10 +32,15 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 });
 
 builder.Services.AddDbContext<AppDatabaseContext>();
+// builder.Services.AddScoped<SmsService>();
 
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IPhoneAuthRepository, PhoneAuthRepository>();
+builder.Services.AddScoped<ITableRepository, TableRepository>();
 
 builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<IPhoneAuthService, PhoneAuthService>();
+builder.Services.AddScoped<ITableService, TableService>();
 
 builder.Services.AddHttpContextAccessor();
 
@@ -67,7 +72,7 @@ app.UseStaticFiles(new StaticFileOptions
 app.MapControllers();
 
 using var scope = app.Services.CreateScope();
-    
+
 using var context = scope.ServiceProvider.GetRequiredService<AppDatabaseContext>();
 
 context.Database.EnsureDeleted();

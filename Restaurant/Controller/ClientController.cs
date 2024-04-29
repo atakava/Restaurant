@@ -1,3 +1,6 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Restaurant.Domain.Entity;
 using Restaurant.Domain.Request.Client;
@@ -101,6 +104,22 @@ public class ClientController : BaseController
 
         response = new BaseResponse<bool>(true, null, true);
 
+        var user = await ClientService.GetByName(request.Name);
+
+        if (response.Success && user != null)
+        {
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Name),
+            };
+
+            var indentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(indentity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+        }
+
         return Ok(response);
     }
 
@@ -140,5 +159,29 @@ public class ClientController : BaseController
         response = new BaseResponse<bool>(true, null, true);
 
         return Ok(response);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CurrentUser()
+    {
+        if (!User.Identity.IsAuthenticated)
+        {
+            return Unauthorized();
+        }
+
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        var user = await ClientService.Get(int.Parse(userId));
+
+        var response = new BaseResponse<Client>(true, null, user);
+        
+        return Ok(response);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return Ok("Вы успешно вышли из аккаунта");
     }
 }

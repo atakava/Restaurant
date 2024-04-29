@@ -16,9 +16,7 @@ public class ClientService : IClientService
 
     public async Task<IEnumerable<Client>> Select()
     {
-        var clients = await _repository.Select();
-
-        return clients;
+        return await _repository.Select();
     }
 
     public async Task<Client?> Get(int id)
@@ -33,17 +31,15 @@ public class ClientService : IClientService
 
     public async Task<Client?> GetByPhone(string phone)
     {
-       return await _repository.GetByPhone(phone);
+        return await _repository.GetByPhone(phone);
     }
 
     public async Task<bool> Create(ClientCreateRequest request)
     {
         var client = await _repository.GetByPhone(request.Phone);
-        
+
         if (client != null)
-        {
             return false;
-        }
 
         client = new Client
         {
@@ -61,9 +57,7 @@ public class ClientService : IClientService
         var client = await _repository.Get(request.Id);
 
         if (client == null)
-        {
             return false;
-        }
 
         client.Name = request.Name ?? client.Name;
         client.Phone = request.Phone ?? client.Phone;
@@ -78,9 +72,7 @@ public class ClientService : IClientService
         var client = await _repository.Get(request.Id);
 
         if (client == null)
-        {
             return false;
-        }
 
         await _repository.Delete(client);
 

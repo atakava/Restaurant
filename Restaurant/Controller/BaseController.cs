@@ -9,4 +9,10 @@ public class BaseController : ControllerBase
 {
     protected IClientService ClientService =>
         HttpContext.RequestServices.GetRequiredService<IClientService>();
+    
+    protected IPhoneAuthService PhoneAuthService =>
+        HttpContext.RequestServices.GetRequiredService<IPhoneAuthService>();
+    
+    protected ITableService TableService =>
+        HttpContext.RequestServices.GetRequiredService<ITableService>();
 }
