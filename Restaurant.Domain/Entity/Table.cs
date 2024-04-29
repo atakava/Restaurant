@@ -14,4 +14,6 @@ public class Table
     public TableType Type { get; set; }
     public int NumberOfSeats { get; set; }
     public int Price { get; set; }
+    
+    public virtual List<ReservationTable>? ReservationTables { get; set; }
 }

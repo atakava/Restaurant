@@ -37,10 +37,12 @@ builder.Services.AddDbContext<AppDatabaseContext>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IPhoneAuthRepository, PhoneAuthRepository>();
 builder.Services.AddScoped<ITableRepository, TableRepository>();
+builder.Services.AddScoped<IReservationTableRepository, ReservationTableRepository>();
 
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IPhoneAuthService, PhoneAuthService>();
 builder.Services.AddScoped<ITableService, TableService>();
+builder.Services.AddScoped<IReservationTableService, ReservationTableService>();
 
 builder.Services.AddHttpContextAccessor();
 

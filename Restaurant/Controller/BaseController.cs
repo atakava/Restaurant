@@ -15,4 +15,7 @@ public class BaseController : ControllerBase
     
     protected ITableService TableService =>
         HttpContext.RequestServices.GetRequiredService<ITableService>();
+    
+    protected IReservationTableService ReservationTableService =>
+        HttpContext.RequestServices.GetRequiredService<IReservationTableService>();
 }

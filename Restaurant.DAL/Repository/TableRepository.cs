@@ -15,22 +15,30 @@ public class TableRepository : ITableRepository
 
     public async Task<IEnumerable<Table>> Select()
     {
-        return await _db.Tables.ToListAsync();
+        return await _db.Tables
+            .Include(e => e.ReservationTables)
+            .ToListAsync();
     }
 
     public async Task<Table?> Get(int id)
     {
-        return await _db.Tables.FirstOrDefaultAsync(i => i.Id == id);
+        return await _db.Tables
+            .Include(e => e.ReservationTables)
+            .FirstOrDefaultAsync(i => i.Id == id);
     }
 
     public async Task<Table?> GetByNumber(int number)
     {
-        return await _db.Tables.FirstOrDefaultAsync(i => i.Number == number);
+        return await _db.Tables
+            .Include(e => e.ReservationTables)
+            .FirstOrDefaultAsync(i => i.Number == number);
     }
 
     public async Task<Table?> GetByNumberOfSeats(int numberOfSeats)
     {
-        return await _db.Tables.FirstOrDefaultAsync(i => i.NumberOfSeats == numberOfSeats);
+        return await _db.Tables
+            .Include(e => e.ReservationTables)
+            .FirstOrDefaultAsync(i => i.NumberOfSeats == numberOfSeats);
     }
 
     public async Task<bool> Create(Table entity)

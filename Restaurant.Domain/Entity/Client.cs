@@ -11,4 +11,5 @@ public class Client
 
     public string Name { get; set; }
     public string Phone { get; set; }
+    public virtual ReservationTable? Table { get; set; }
 }
