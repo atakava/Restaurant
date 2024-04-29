@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "oKDbxVfXi+i5vkC2GMUvXWViKBXIb2NC5ONkGroXmqA=",
+  "Source": "Restaurant",
+  "BasePath": "_content/Restaurant",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Restaurant\\wwwroot",
+      "Source": "Restaurant",
+      "ContentRoot": "C:\\prod\\Restaurant\\Restaurant\\wwwroot\\",
+      "BasePath": "_content/Restaurant",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

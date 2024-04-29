@@ -328,6 +328,39 @@
             "rid": "win"
           }
         }
+      },
+      "Restaurant.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.4",
+          "Microsoft.EntityFrameworkCore.Proxies": "8.0.4",
+          "Npgsql": "8.0.2",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.2",
+          "Restaurant.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Restaurant.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Restaurant.DAL.dll": {}
+        }
+      },
+      "Restaurant.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.4",
+          "Microsoft.EntityFrameworkCore.Proxies": "8.0.4",
+          "Npgsql": "8.0.2",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Restaurant.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Restaurant.Domain.dll": {}
+        }
       }
     }
   },
@@ -835,6 +868,16 @@
         "system.diagnostics.eventlog.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Restaurant.DAL/1.0.0": {
+      "type": "project",
+      "path": "../Restaurant.DAL/Restaurant.DAL.csproj",
+      "msbuildProject": "../Restaurant.DAL/Restaurant.DAL.csproj"
+    },
+    "Restaurant.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Restaurant.Domain/Restaurant.Domain.csproj",
+      "msbuildProject": "../Restaurant.Domain/Restaurant.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -842,7 +885,9 @@
       "Microsoft.EntityFrameworkCore >= 8.0.4",
       "Microsoft.EntityFrameworkCore.Proxies >= 8.0.4",
       "Npgsql >= 8.0.2",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.2"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.2",
+      "Restaurant.DAL >= 1.0.0",
+      "Restaurant.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -872,7 +917,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\prod\\Restaurant\\Restaurant.DAL\\Restaurant.DAL.csproj": {
+              "projectPath": "C:\\prod\\Restaurant\\Restaurant.DAL\\Restaurant.DAL.csproj"
+            },
+            "C:\\prod\\Restaurant\\Restaurant.Domain\\Restaurant.Domain.csproj": {
+              "projectPath": "C:\\prod\\Restaurant\\Restaurant.Domain\\Restaurant.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

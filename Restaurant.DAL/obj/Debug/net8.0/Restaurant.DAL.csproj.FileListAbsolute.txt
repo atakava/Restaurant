@@ -1,0 +1,16 @@
+C:\prod\Restaurant\Restaurant.DAL\bin\Debug\net8.0\Restaurant.DAL.deps.json
+C:\prod\Restaurant\Restaurant.DAL\bin\Debug\net8.0\Restaurant.DAL.dll
+C:\prod\Restaurant\Restaurant.DAL\bin\Debug\net8.0\Restaurant.DAL.pdb
+C:\prod\Restaurant\Restaurant.DAL\bin\Debug\net8.0\Restaurant.Domain.dll
+C:\prod\Restaurant\Restaurant.DAL\bin\Debug\net8.0\Restaurant.Domain.pdb
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\Restaurant.DAL.csproj.AssemblyReference.cache
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\Restaurant.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\Restaurant.DAL.AssemblyInfoInputs.cache
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\Restaurant.DAL.AssemblyInfo.cs
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\Restaurant.DAL.csproj.CoreCompileInputs.cache
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\Restaurant.DAL.sourcelink.json
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\Restaura.6B1B0A81.Up2Date
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\Restaurant.DAL.dll
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\refint\Restaurant.DAL.dll
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\Restaurant.DAL.pdb
+C:\prod\Restaurant\Restaurant.DAL\obj\Debug\net8.0\ref\Restaurant.DAL.dll

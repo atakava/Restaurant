@@ -16,12 +16,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controller\" />
-      <Folder Include="wwwroot\img\" />
+      <Folder Include="wwwroot\image\" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Restaurant.DAL\Restaurant.DAL.csproj" />
+      <ProjectReference Include="..\Restaurant.Service\Restaurant.Service.csproj" />
     </ItemGroup>
 
 </Project>

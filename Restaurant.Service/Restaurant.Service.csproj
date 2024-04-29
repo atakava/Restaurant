@@ -14,8 +14,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Implementations\" />
-      <Folder Include="Interfaces\" />
+      <ProjectReference Include="..\Restaurant.DAL\Restaurant.DAL.csproj" />
+      <ProjectReference Include="..\Restaurant.Domain\Restaurant.Domain.csproj" />
     </ItemGroup>
 
 </Project>

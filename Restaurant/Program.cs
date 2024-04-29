@@ -4,6 +4,8 @@ using Microsoft.Extensions.FileProviders;
 using Restaurant.DAL;
 using Restaurant.DAL.Interfaces;
 using Restaurant.DAL.Repository;
+using Restaurant.Service.Implementations;
+using Restaurant.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,8 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 builder.Services.AddDbContext<AppDatabaseContext>();
 
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
+
+builder.Services.AddScoped<IClientService, ClientService>();
 
 builder.Services.AddHttpContextAccessor();
 

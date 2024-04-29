@@ -20,38 +20,17 @@ public class ClientRepository : IClientRepository
 
     public async Task<Client?> Get(int id)
     {
-        var client = await _db.Clients.FirstOrDefaultAsync(i => i.Id == id);
-
-        if (client == null || client.Id == 0)
-        {
-            throw new Exception("Клиент не найден по ID");
-        }
-
-        return client;
+        return await _db.Clients.FirstOrDefaultAsync(i => i.Id == id);
     }
 
     public async Task<Client?> GetByName(string name)
     {
-        var client = await _db.Clients.FirstOrDefaultAsync(i => i.Name == name);
-
-        if (client == null)
-        {
-            throw new Exception("Клиент не найден по имени");
-        }
-
-        return client;
+        return await _db.Clients.FirstOrDefaultAsync(i => i.Name == name);
     }
 
     public async Task<Client?> GetByPhone(string phone)
     {
-        var client = await _db.Clients.FirstOrDefaultAsync(i => i.Phone == phone);
-
-        if (client == null)
-        {
-            throw new Exception("Клиент не найден по номеру телефона");
-        }
-
-        return client;
+        return await _db.Clients.FirstOrDefaultAsync(i => i.Phone == phone);
     }
 
     public async Task<bool> Create(Client entity)

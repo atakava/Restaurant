@@ -1,6 +1,12 @@
+using Microsoft.AspNetCore.Mvc;
+using Restaurant.Service.Interfaces;
+
 namespace Restaurant.Controller;
 
-public class BaseController
+[ApiController]
+[Route("api/[controller]/[action]")]
+public class BaseController : ControllerBase
 {
-    
+    protected IClientService ClientService =>
+        HttpContext.RequestServices.GetRequiredService<IClientService>();
 }
