@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "l+QUhRm/vwZ8lLYebiongR+Yk9TL/XdBG7AT9R7zwzYVmczW3cuEIUQbdzSw82Q/r+C8qn+OKRXgtJB67brmZw==",
+  "dgSpecHash": "H/+PfZ+EPh2rUUAR3Updx/b9R3uXEj6kE+APB4qJmZVdAwk5p/U/jrqn7Dq0AsySQMpc74gyc878joeggtg0sg==",
   "success": true,
   "projectFilePath": "C:\\prod\\Restaurant\\Restaurant.Service\\Restaurant.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vgama\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\vgama\\.nuget\\packages\\microsoft.aspnetcore.http.features\\6.0.0-preview.4.21253.5\\microsoft.aspnetcore.http.features.6.0.0-preview.4.21253.5.nupkg.sha512",
     "C:\\Users\\vgama\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.4\\microsoft.entityframeworkcore.8.0.4.nupkg.sha512",
     "C:\\Users\\vgama\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.4\\microsoft.entityframeworkcore.abstractions.8.0.4.nupkg.sha512",
     "C:\\Users\\vgama\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.4\\microsoft.entityframeworkcore.analyzers.8.0.4.nupkg.sha512",
@@ -21,7 +22,8 @@
     "C:\\Users\\vgama\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\vgama\\.nuget\\packages\\npgsql\\8.0.2\\npgsql.8.0.2.nupkg.sha512",
     "C:\\Users\\vgama\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.2\\npgsql.entityframeworkcore.postgresql.8.0.2.nupkg.sha512",
-    "C:\\Users\\vgama\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512"
+    "C:\\Users\\vgama\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
+    "C:\\Users\\vgama\\.nuget\\packages\\system.io.pipelines\\6.0.0-preview.4.21253.7\\system.io.pipelines.6.0.0-preview.4.21253.7.nupkg.sha512"
   ],
   "logs": []
 }

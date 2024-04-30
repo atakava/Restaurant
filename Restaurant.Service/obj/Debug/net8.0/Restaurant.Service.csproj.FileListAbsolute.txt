@@ -16,3 +16,6 @@ C:\prod\Restaurant\Restaurant.Service\obj\Debug\net8.0\Restaurant.Service.dll
 C:\prod\Restaurant\Restaurant.Service\obj\Debug\net8.0\refint\Restaurant.Service.dll
 C:\prod\Restaurant\Restaurant.Service\obj\Debug\net8.0\Restaurant.Service.pdb
 C:\prod\Restaurant\Restaurant.Service\obj\Debug\net8.0\ref\Restaurant.Service.dll
+C:\prod\Restaurant\Restaurant.Service\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\prod\Restaurant\Restaurant.Service\bin\Debug\net8.0\Microsoft.Extensions.Features.dll
+C:\prod\Restaurant\Restaurant.Service\bin\Debug\net8.0\Microsoft.Net.Http.Headers.dll
