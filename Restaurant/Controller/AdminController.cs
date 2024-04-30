@@ -37,7 +37,7 @@ public class AdminController : BaseController
             }
         });
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> GetByLogin([FromBody] AdminGetByLoginRequest request)
     {
@@ -65,7 +65,7 @@ public class AdminController : BaseController
             }
         });
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> Select()
     {
@@ -75,7 +75,8 @@ public class AdminController : BaseController
 
         if (admins.Count() == 0)
         {
-            response = new BaseResponse<IEnumerable<Administrator>>(false, "Get Admin Select: нет ни одного admin", null);
+            response = new BaseResponse<IEnumerable<Administrator>>(false, "Get Admin Select: нет ни одного admin",
+                null);
 
             return BadRequest(response);
         }
@@ -94,15 +95,15 @@ public class AdminController : BaseController
             })
         });
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] AdminCreateRequest request)
     {
-        var client = await AdminService.Create(request);
+        var user = await AdminService.Create(request);
 
         IBaseResponse<bool> response;
 
-        if (client == false)
+        if (user == false)
         {
             response = new BaseResponse<bool>(false, "Ошибка создания admin", false);
 
@@ -111,14 +112,14 @@ public class AdminController : BaseController
 
         response = new BaseResponse<bool>(true, null, true);
 
-        var user = await AdminService.GetByLogin(request.Login);
+        var admin = await AdminService.GetByLogin(request.Login);
 
-        if (response.Success && user != null)
+        if (response.Success && admin != null)
         {
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Login),
+                new Claim(ClaimTypes.NameIdentifier, admin.Id.ToString()),
+                new Claim(ClaimTypes.Name, admin.Login),
             };
 
             var indentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -129,15 +130,47 @@ public class AdminController : BaseController
 
         return Ok(response);
     }
-    
+
     [HttpPost]
-    public async Task<IActionResult> Update([FromBody] AdminUpdateRequest request)
+    public async Task<IActionResult> Login([FromBody] AdminLoginRequest request)
     {
-        var client = await AdminService.Update(request);
+        var admin = await AdminService.Login(request);
 
         IBaseResponse<bool> response;
 
-        if (client == false)
+        if (!admin)
+        {
+            response = new BaseResponse<bool>(false, "Ошибка входа в систему, проверьте данные", false);
+
+            return BadRequest(response);
+        }
+
+        var currentAdmin = await AdminService.GetByLogin(request.Login);
+        
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.NameIdentifier, currentAdmin.Id.ToString()),
+            new Claim(ClaimTypes.Name, currentAdmin.Login),
+        };
+
+        var indentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var principal = new ClaimsPrincipal(indentity);
+
+        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+        
+        response = new BaseResponse<bool>(true, null, true);
+
+        return Ok(response);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Update([FromBody] AdminUpdateRequest request)
+    {
+        var admin = await AdminService.Update(request);
+
+        IBaseResponse<bool> response;
+
+        if (admin == false)
         {
             response = new BaseResponse<bool>(false, "Ошибка обновления admin", false);
 
@@ -152,11 +185,11 @@ public class AdminController : BaseController
     [HttpPost]
     public async Task<IActionResult> Delete([FromBody] AdminDeleteRequest request)
     {
-        var client = await AdminService.Delete(request);
+        var admin = await AdminService.Delete(request);
 
         IBaseResponse<bool> response;
 
-        if (client == false)
+        if (admin == false)
         {
             response = new BaseResponse<bool>(false, "Ошибка удаления admin", false);
 

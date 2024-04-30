@@ -46,6 +46,25 @@ public class AdminService : IAdminService
         return true;
     }
 
+    public async Task<bool> Login(AdminLoginRequest request)
+    {
+        var admin = await _repository.GetByLogin(request.Login);
+
+        if (admin == null)
+            return false;
+
+        var password = PasswordHasher.HashPassword($"{request.Password}::{admin.Salt}");
+
+        var verify = await _repository.Login(request.Login, password);
+
+        if (verify)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public async Task<bool> Update(AdminUpdateRequest request)
     {
         var admin = await _repository.Get(request.Id);

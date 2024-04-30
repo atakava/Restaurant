@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Restaurant.DAL.Interfaces;
 using Restaurant.Domain.Entity;
+using Restaurant.Domain.Request.Admin;
 
 namespace Restaurant.DAL.Repository;
 
@@ -32,6 +33,18 @@ public class AdminRepository : IAdminRepository
     {
         _db.Administrators.Add(entity);
         await _db.SaveChangesAsync();
+
+        return true;
+    }
+
+    public async Task<bool> Login(string login, string password)
+    {
+        var verify =
+            await _db.Administrators
+                .FirstOrDefaultAsync(i => i.Login == login && i.Password == password);
+
+        if (verify == null)
+            return false;
 
         return true;
     }

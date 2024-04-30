@@ -9,6 +9,7 @@ public interface IAdminService
     Task<Administrator?> GetByLogin(string login);
     Task<IEnumerable<Administrator>?> Select();
     Task<bool> Create(AdminCreateRequest request);
+    Task<bool> Login(AdminLoginRequest request);
     Task<bool> Update(AdminUpdateRequest request);
     Task<bool> Delete(AdminDeleteRequest request);
 }
