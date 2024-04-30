@@ -44,7 +44,8 @@ public class ClientService : IClientService
         client = new Client
         {
             Name = request.Name,
-            Phone = request.Phone
+            Phone = request.Phone,
+            Role = "client"
         };
 
         await _repository.Create(client);

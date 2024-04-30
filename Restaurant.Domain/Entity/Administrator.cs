@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Restaurant.Domain.Entity;
 
-public class Client
+public class Administrator
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
-    public string Name { get; set; }
-    public string Phone { get; set; }
+    public string Login { get; set; }
+    public string Password { get; set; }
+    public string Salt { get; set; }
     public string Role { get; set; }
-    public virtual ReservationTable? Table { get; set; }
 }

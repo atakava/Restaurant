@@ -26,7 +26,16 @@ public class ClientController : BaseController
 
         response = new BaseResponse<Client>(true, null, client);
 
-        return Ok(response);
+        return Ok(new
+        {
+            success = response.Success,
+            data = new
+            {
+                response.Data!.Id,
+                response.Data!.Name,
+                response.Data!.Phone
+            }
+        });
     }
 
     [HttpPost]
@@ -45,7 +54,16 @@ public class ClientController : BaseController
 
         response = new BaseResponse<Client>(true, null, client);
 
-        return Ok(response);
+        return Ok(new
+        {
+            success = response.Success,
+            data = new
+            {
+                response.Data!.Id,
+                response.Data!.Name,
+                response.Data!.Phone
+            }
+        });
     }
 
     [HttpPost]
@@ -65,7 +83,16 @@ public class ClientController : BaseController
         response = new BaseResponse<Client>(true, null, client);
 
 
-        return Ok(response);
+        return Ok(new
+        {
+            success = response.Success,
+            data = new
+            {
+                response.Data!.Id,
+                response.Data!.Name,
+                response.Data!.Phone
+            }
+        });
     }
 
     [HttpPost]
@@ -85,7 +112,16 @@ public class ClientController : BaseController
         response = new BaseResponse<IEnumerable<Client>>(true, null, clients);
 
 
-        return Ok(response);
+        return Ok(new
+        {
+            success = response.Success,
+            data = response.Data!.Select(i => new
+            {
+                i.Id,
+                i.Name,
+                i.Phone
+            })
+        });
     }
 
     [HttpPost]
@@ -174,7 +210,7 @@ public class ClientController : BaseController
         var user = await ClientService.Get(int.Parse(userId));
 
         var response = new BaseResponse<Client>(true, null, user);
-        
+
         return Ok(response);
     }
 

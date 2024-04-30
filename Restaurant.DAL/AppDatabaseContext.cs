@@ -9,6 +9,7 @@ public class AppDatabaseContext : DbContext
     public DbSet<PhoneCode> PhoneCodes { get; set; }
     public DbSet<Table> Tables { get; set; }
     public DbSet<ReservationTable> ReservationTables { get; set; }
+    public DbSet<Administrator> Administrators { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
