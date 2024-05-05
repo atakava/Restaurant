@@ -120,6 +120,7 @@ public class AdminController : BaseController
             {
                 new Claim(ClaimTypes.NameIdentifier, admin.Id.ToString()),
                 new Claim(ClaimTypes.Name, admin.Login),
+                new Claim(ClaimTypes.Role, admin.Role)
             };
 
             var indentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -151,6 +152,7 @@ public class AdminController : BaseController
         {
             new Claim(ClaimTypes.NameIdentifier, currentAdmin.Id.ToString()),
             new Claim(ClaimTypes.Name, currentAdmin.Login),
+            new Claim(ClaimTypes.Role, currentAdmin.Role)
         };
 
         var indentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -206,7 +208,7 @@ public class AdminController : BaseController
     {
         if (!User.Identity.IsAuthenticated)
         {
-            return Unauthorized();
+            return Ok(new BaseResponse<Administrator>(true, null,null));
         }
 
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

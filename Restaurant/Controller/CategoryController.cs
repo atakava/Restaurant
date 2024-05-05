@@ -97,6 +97,7 @@ public class CategoryController : BaseController
             success = response.Success,
             data = response.Data!.Select(i => new
             {
+                i.Id,
                 i.Name,
                 products = i.Products!.Select(p => new
                 {

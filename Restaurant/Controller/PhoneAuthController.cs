@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Restaurant.Domain.Entity;
 using Restaurant.Domain.Request.PhoneCode;
 using Restaurant.Domain.Response;
 
@@ -14,18 +15,18 @@ public class PhoneAuthController : BaseController
     {
         var user = await ClientService.GetByPhone(request.Phone);
 
-        IBaseResponse<string> response;
+        IBaseResponse<PhoneCode> response;
 
         if (user == null)
         {
-            response = new BaseResponse<string>(false, "Ошибка пользователя с таким телефоном не существует", null);
+            response = new BaseResponse<PhoneCode>(false, "Ошибка пользователя с таким телефоном не существует", null);
 
             return BadRequest(response);
         }
 
-        await PhoneAuthService.GenerateCode(request);
+        var code = await PhoneAuthService.GenerateCode(request);
 
-        response = new BaseResponse<string>(true, null, "код выслан по смс");
+        response = new BaseResponse<PhoneCode>(true, null, code);
 
         return Ok(response);
     }

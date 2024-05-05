@@ -5,6 +5,6 @@ namespace Restaurant.Service.Interfaces;
 
 public interface IPhoneAuthService
 {
-    Task<bool> GenerateCode(PhoneCodeGenerateRequest request);
+    Task<PhoneCode> GenerateCode(PhoneCodeGenerateRequest request);
     Task<bool> VerifyCode(PhoneCodeVerifyRequest request);
 }

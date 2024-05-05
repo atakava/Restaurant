@@ -16,13 +16,17 @@ public class PhoneAuthService : IPhoneAuthService
         _clientRepository = clientRepository;
     }
 
-    public async Task<bool> GenerateCode(PhoneCodeGenerateRequest request)
+    public async Task<PhoneCode> GenerateCode(PhoneCodeGenerateRequest request)
     {
         var client = await _clientRepository.GetByPhone(request.Phone);
 
         if (client == null)
         {
-            return false;
+            return new PhoneCode
+            {
+                Phone = request.Phone,
+                Code = "На такой номер  никто не зарегестрирован"
+            };;
         }
         
         var code = SmsService.GenerateVerificationCode();
@@ -35,7 +39,7 @@ public class PhoneAuthService : IPhoneAuthService
 
         await _phoneRepository.CreateCode(generateCode);
 
-        return true;
+        return generateCode;
     }
 
     public async Task<bool> VerifyCode(PhoneCodeVerifyRequest request)
